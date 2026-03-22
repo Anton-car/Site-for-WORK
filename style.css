@@ -1,0 +1,272 @@
+/* 1. БАЗОВІ НАЛАШТУВАННЯ ТА ЗМІННІ */
+:root {
+    --bg-color: #f4f5f7;
+    --white: #ffffff;
+    --blue: #00a1f1;
+    --pink: #e12469;
+    --dark-blue: #1f2c43;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Захист від горизонтального скролу */
+}
+
+.app-container {
+    width: 100%;
+    max-width: 390px; /* Мобільна ширина за замовчуванням */
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+/* 2. HERO SECTION (Мобільна: праворуч) */
+.hero-text { 
+    padding: calc(var(--safe-top) + 60px) 25px 30px; 
+    text-align: right; 
+}
+
+.hero-text h1 { 
+    color: var(--blue); 
+    font-size: 24px; 
+    font-weight: 400; 
+    line-height: 1.2; 
+}
+
+.hero-text h1 span { 
+    font-weight: 700; 
+}
+
+/* 3. КОНТЕНТ-КАРТКА (БІЛА) */
+.content-card {
+    background-color: var(--white);
+    border-radius: 40px 40px 0 0;
+    padding: 40px 25px;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.02);
+    min-height: 60vh;
+}
+
+.podcast-header { 
+    text-align: center; 
+    margin-bottom: 35px; 
+}
+
+.podcast-header .label { 
+    display: block; 
+    opacity: 0.6; 
+    font-size: 18px; 
+    margin-bottom: 5px;
+}
+
+.podcast-header .title { 
+    color: var(--blue); 
+    font-size: 28px; 
+    font-weight: 700; 
+}
+
+/* 4. СПИСОК ПОДКАСТІВ */
+.podcast-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+.podcast-item {
+    background-color: var(--dark-blue);
+    border-radius: 30px;
+    min-height: 220px;
+    position: relative;
+    overflow: hidden; /* Обрізає зум відео */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.podcast-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Класи масштабування для CapCut */
+.video-zoom-sm { transform: translate(-50%, -50%) scale(1.1); }
+.video-zoom-lg { transform: translate(-50%, -50%) scale(1.8); }
+
+.podcast-name {
+    color: var(--white);
+    z-index: 5;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.play-button {
+    width: 55px;
+    height: 55px;
+    background: var(--white);
+    border: none;
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-button .icon { 
+    width: 24px; 
+    fill: var(--pink); 
+}
+
+/* КЕРУВАННЯ ВІДЕО */
+.video-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-fill { 
+    width: 0%; 
+    height: 100%; 
+    background: var(--pink); 
+}
+
+.video-time { 
+    color: var(--white); 
+    font-size: 13px; 
+    text-shadow: 0 1px 4px black; 
+}
+
+/* СТАНИ ВІДТВОРЕННЯ */
+.podcast-item.is-playing .podcast-name,
+.podcast-item.is-playing .play-button { 
+    display: none; 
+}
+
+.podcast-item.is-playing .video-controls { 
+    display: flex; 
+}
+
+/* 5. ФУТЕР */
+.main-footer {
+    background: var(--blue);
+    padding: 30px 25px calc(var(--safe-bottom) + 30px);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer-content { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 15px; 
+}
+
+.avatar-container {
+    width: 85px; 
+    height: 85px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--pink);
+    box-shadow: 0 4px 15px rgba(225, 36, 105, 0.3);
+}
+
+.avatar-video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: 50% 65%; 
+}
+
+.footer-text { 
+    color: var(--white); 
+    font-weight: 500; 
+    text-align: center; 
+}
+
+/* 6. АДАПТИВНІСТЬ (ТАБЛЕТИ ТА ПК) */
+
+@media (min-width: 600px) {
+    .app-container { 
+        max-width: 95%; /* Даємо більше місця на iPad */
+    }
+
+    /* Заголовок по центру в 1 рядок */
+    .hero-text { 
+        text-align: center !important; 
+        padding: 80px 25px 40px; 
+    }
+
+    .hero-text h1 { 
+        white-space: nowrap; 
+    }
+
+    .hero-text h1 br { 
+        display: none; 
+    }
+    
+    /* СІТКА ДЛЯ ПЛАНШЕТІВ: Гарантуємо 2 колонки */
+    .podcast-list { 
+        display: grid; 
+        /* repeat(2, ...) змушує iPad ставити відео в ряд */
+        grid-template-columns: repeat(2, minmax(280px, 340px));
+        justify-content: center; 
+        gap: 20px; 
+    }
+    
+    .footer-content { 
+        flex-direction: row; 
+        gap: 25px; 
+    }
+
+    .footer-text { 
+        font-size: 20px; 
+        text-align: left; 
+    }
+}
+
+@media (min-width: 1025px) {
+    .app-container { 
+        max-width: 1100px; 
+    }
+
+    /* СІТКА ДЛЯ ПК: до 3 колонок у центрі */
+    .podcast-list { 
+        grid-template-columns: repeat(auto-fit, 340px);
+        gap: 40px;
+    }
+}
