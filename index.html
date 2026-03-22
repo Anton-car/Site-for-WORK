@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Antonio Studio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg style="display: none;">
+    <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="M8 5V19L19 12L8 5Z" />
+    </symbol>
+</svg>
+
+<div class="app-container">
+
+    <section class="hero-text">
+        <h1>Легкість інформації <br><span>для кожного</span></h1>
+    </section>
+
+    <main class="content-card">
+        <div class="podcast-header">
+            <span class="label">Подкаст</span>
+            <h2 class="title">Менше діла більше слів</h2>
+        </div>
+
+        <div class="podcast-list">
+            <div class="podcast-item">
+                <h3 class="podcast-name">WORK і конкуренти</h3>
+                <button class="play-button" aria-label="Відтворити">
+                    <svg class="icon"><use href="#icon-play"></use></svg>
+                </button>
+                
+                <video class="podcast-video video-zoom-sm" preload="metadata" playsinline>
+                    <source src="Media/Podcast 1.mp4" type="video/mp4">
+                </video>
+
+                <div class="video-controls">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="video-time">0:00 / 0:00</div>
+                </div>
+            </div>
+
+            <div class="podcast-item">
+                <h3 class="podcast-name">Заперечення</h3>
+                <button class="play-button" aria-label="Відтворити">
+                    <svg class="icon"><use href="#icon-play"></use></svg>
+                </button>
+                
+                <video class="podcast-video video-zoom-lg" style="--video-scale: 1.8;" preload="metadata" playsinline>
+                    <source src="Media/Podcast 2.mp4" type="video/mp4">
+                </video>
+
+                <div class="video-controls">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="video-time">0:00 / 0:00</div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div> 
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="avatar-container">
+            <video class="avatar-video" autoplay loop muted playsinline>
+                <source src="Media/Avatar.mp4" type="video/mp4">
+                Ваш браузер не підтримує відео.
+            </video>
+        </div>
+        
+        <p class="footer-text">Антон — твій персональний колега</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
